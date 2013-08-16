@@ -34,6 +34,8 @@ alias g:r="php artisan generate:resource"
 alias st="/var/www/st2/sublime_text"
 alias chrome="~/Downloads/chrome-linux/chrome"
 alias nb="/usr/local/netbeans-7.2.1/bin/netbeans -J-Xverify:none -J-Xmx128m"
+alias np="sudo npm install"
+alias ng="sudo service nginx"
 
 # Cake
 alias ck="lib/Cake/Console/cake --app app/"

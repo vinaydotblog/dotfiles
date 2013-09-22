@@ -15,6 +15,11 @@ alias ga="git add"
 # Github
 gc(){ git clone https://github.com/$1.git $2; }
 go(){ git remote add origin https://github.com/$1.git; }
+gsub(){ git submodule add git://github.com/$1.git $2; }
+gcm(){
+	git commit -m $1
+	git push origin master
+}
 
 # Laravel
 alias art="php artisan"

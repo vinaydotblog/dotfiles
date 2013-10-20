@@ -1,9 +1,20 @@
+# Welcome message and move to workspace
+echo "Hi Vinay! Let's start the adventure."
+cd /var/www
+
 # System
 alias open="nautilus"
-alias apache="/etc/init.d/apache2"
+alias apache="sudo /etc/init.d/apache2"
+alias ng="sudo service nginx"
+alias ng:config="st /etc/nginx/sites-available/default"
+alias whereami="You are on vinay's local pc"
 
 # Terminal
 alias cls="clear"
+
+# Github
+gc(){ git clone https://github.com/$1.git $2; }
+go(){ git remote add origin https://github.com/$1.git; }
 
 # Git Aliases
 alias g="git"
@@ -11,15 +22,6 @@ alias commit="git commit -m"
 alias push="git push origin master"
 alias pull="git pull"
 alias ga="git add"
-
-# Github
-gc(){ git clone https://github.com/$1.git $2; }
-go(){ git remote add origin https://github.com/$1.git; }
-gsub(){ git submodule add git://github.com/$1.git $2; }
-gcm(){
-	git commit -m $1
-	git push origin master
-}
 
 # Laravel
 alias art="php artisan"
@@ -36,29 +38,38 @@ alias g:r="php artisan generate:resource"
 ## System Specific Commands ##
 
 # Programs
-alias st="/var/www/st2/sublime_text"
+alias st="subl -a"
 alias chrome="~/Downloads/chrome-linux/chrome"
 alias nb="/usr/local/netbeans-7.2.1/bin/netbeans -J-Xverify:none -J-Xmx128m"
-alias np="sudo npm install"
-alias ng="sudo service nginx"
+alias npi="sudo npm install"
+alias npig="sudo npm -g install"
 
-# Cake
+# Cake 2
 alias ck="lib/Cake/Console/cake --app app/"
 
 # Self
-alias aliases="st ~/.bash_profile"
-alias reload="source ~/.bash_profile"
+alias aliases="st ~/.bash_aliases"
+alias reload="source ~/.bash_aliases"
+source ~/.bash_prompt
+
+# Load some secure commands
+source ~/.bash_secure
 
 point(){
 	if [ "$#" == "2" ]; then
-		echo "alias $1='$2'" >> ~/.bash_profile
+		echo "alias $1='$2'" >> ~/.bash_aliases
 	else
 		echo "Pass exactly two arguments!"
 	fi
 	reload
 }
 
-
 # Propmt for password
-alias wr='sudo chmod -R 777' # Make it writable
+alias bgd="cd /var/www/briangavindiamonds_branch/"
+alias public="cd /var/www/bgd_public"
+alias admin="cd /var/www/bgd_admin"
+alias wr='sudo chmod -R 777'
 alias up='svn update'
+alias apache:r='apache restart'
+
+alias sync_files="rsync -avz /home/bgd_user/bgd/bgdadmin/app/webroot/files/diamond_rotator_images/ /home/bgd_user/bgd/bgdpublic/app/webroot/files/diamond_rotator_images/"
